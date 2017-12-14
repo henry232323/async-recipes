@@ -1,7 +1,15 @@
+"""
+Several queues to be used, including a FIFO/LIFO regular queue and
+a Heap Queue, which both wait until an operation may be done. If the
+queue is full, wait until a spot clears to add. If the queue is empty,
+wait until an item is added to pop.
+"""
+
+
 from collections import deque
 from heapq import heappush, heappop
 
-from . import Future
+from .future import Future
 from types import coroutine
 
 
