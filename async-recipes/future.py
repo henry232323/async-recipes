@@ -4,10 +4,10 @@ Three classes.
 The First, a Future will wait until it's result is set or an error is set
     If the result is set, it will return the result. If an error is set, it will
     raise the error.
-
+    
 The Second, a Task wraps a coroutine or another Future, and will pass everything
     forward until it is done.
-
+    
 The Third, a Conditional Future, it will wait until its condition becomes true,
     checking with each pass of the event loop.
 """
@@ -18,7 +18,6 @@ import typing
 class Future:
     def __init__(self):
         """An awaitable that will yield until an exception or result is set."""
-        self.__name__ = self.__class__.__name__
         self._data = None
         self._result = None
         self._error = None
