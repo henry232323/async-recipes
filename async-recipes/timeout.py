@@ -70,10 +70,10 @@ class timeout:
 
     def send(self, data):
         if monotonic() < self._finish:
-            return self._coro.send(val)
+            return self._coro.send(data)
         raise TimeoutError
 
     def throw(self, data):
         if monotonic() < self._finish:
-            return self._coro.throw(val)
+            return self._coro.throw(data)
         raise TimeoutError
