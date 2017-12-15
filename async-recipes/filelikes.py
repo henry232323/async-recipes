@@ -23,7 +23,7 @@ class AsyncFile:
         return self.file.recv(nbytes)
 
     @coroutine
-    def read(self, nbytes)
+    def read(self, nbytes):
         cond = Conditional(lambda: select.select([self.file], [], [], 0)[0])
         yield from cond
         return self.file.read(nbytes)
@@ -32,13 +32,13 @@ class AsyncFile:
     def send(self, data):
         cond = Conditional(lambda: select.select([], [self.file], [], 0)[1])
         yield from cond
-        return self.file.send(nbytes)
+        return self.file.send(data)
 
     @coroutine
-    def write(self, data)
+    def write(self, data):
         cond = Conditional(lambda: select.select([], [self.file], [], 0)[1])
         yield from cond
-        return self.file.write(nbytes)
+        return self.file.write(data)
 
     @coroutine
     def accept(self):
