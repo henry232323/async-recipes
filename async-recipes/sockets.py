@@ -66,6 +66,6 @@ def async_connect(sock, host):
 def ssl_do_handshake(socket, *args, **kwargs):
     while True:
         try:
-            return socket.do_handshake()
+            return socket.do_handshake(*args, **kwargs)
         except (_ssl.SSLWantReadError, _ssl.SSLWantWriteError):
             yield
